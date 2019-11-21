@@ -219,6 +219,7 @@ namespace memory_view{
 
         constexpr void remove_prefix(size_type n)noexcept{
             _data += n;
+            _size -= n;
         }
         constexpr void remove_suffix(size_type n)noexcept{
             _size -= n;
