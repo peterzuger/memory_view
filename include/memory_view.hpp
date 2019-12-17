@@ -76,12 +76,6 @@ namespace memory_view{
         memory_view& operator=(const memory_view& other)noexcept = default;
         memory_view& operator=(memory_view&& other)noexcept = default;
 
-        // construct from compiletime array type
-        template<std::size_t N>
-        constexpr memory_view(const value_type arr[N]):
-            _data{arr},
-            _size{N}{}
-
         // construct from pointer and size
         constexpr memory_view(const_pointer begin, size_type size):
             _data{begin},
@@ -91,11 +85,6 @@ namespace memory_view{
         constexpr memory_view(const_pointer begin, const_pointer end):
             _data{begin},
             _size{end - begin}{}
-
-        // construct from address and size
-        explicit constexpr memory_view(size_type address, size_t size):
-            _data{reinterpret_cast<const_pointer>(address)},
-            _size{size}{}
 
         void swap(memory_view& other)noexcept{
             using std::swap;
