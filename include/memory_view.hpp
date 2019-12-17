@@ -139,7 +139,7 @@ namespace memory_view{
             return size() == 0;
         }
         constexpr size_type size()const noexcept{
-            return size;
+            return _size;
         }
         constexpr size_type max_size()const noexcept{
             return std::numeric_limits<std::size_t>::max();
