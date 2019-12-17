@@ -70,18 +70,11 @@ namespace memory_view{
 
         static const size_type npos  = -1;
 
-        // copy constructor
-        constexpr memory_view(const memory_view& other):
-            _data{other.data()},
-            _size{other.size()}{}
+        constexpr memory_view(const memory_view& other) = default;
+        constexpr memory_view(memory_view&& other) = default;
 
-        // move constructor
-        constexpr memory_view(memory_view&& other):
-            _data{other.data()},
-            _size{other.size()}{
-                other._data = nullptr;
-                other._size = 0;
-            }
+        memory_view& operator=(const memory_view& other)noexcept = default;
+        memory_view& operator=(memory_view&& other)noexcept = default;
 
         // construct from compiletime array type
         template<std::size_t N>
@@ -103,22 +96,6 @@ namespace memory_view{
         explicit constexpr memory_view(size_type address, size_t size):
             _data{reinterpret_cast<const_pointer>(address)},
             _size{size}{}
-
-        // copy assignment
-        memory_view& operator=(const memory_view& other)noexcept{
-            _data = other._data;
-            _size = other._size;
-            return *this;
-        }
-
-        // move assignment
-        memory_view& operator=(memory_view&& other)noexcept{
-            _data = other._data;
-            _size = other._size;
-            other._data = nullptr;
-            other._size = 0;
-            return *this;
-        }
 
         void swap(memory_view& other)noexcept{
             using std::swap;
