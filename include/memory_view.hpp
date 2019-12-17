@@ -51,7 +51,7 @@ namespace memory_view{
 
     template<typename T>
     class memory_view{
-        const T*    _data;
+        T*    _data;
         std::size_t _size;
 
     public:
@@ -77,12 +77,12 @@ namespace memory_view{
         memory_view& operator=(memory_view&& other)noexcept = default;
 
         // construct from pointer and size
-        constexpr memory_view(const_pointer begin, size_type size):
+        constexpr memory_view(pointer begin, size_type size):
             _data{begin},
             _size{size}{}
 
         // construct from begin and end pointer
-        constexpr memory_view(const_pointer begin, const_pointer end):
+        constexpr memory_view(pointer begin, pointer end):
             _data{begin},
             _size{end - begin}{}
 
