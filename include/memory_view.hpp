@@ -68,7 +68,7 @@ namespace memory_view{
         using reverse_iterator       = std::reverse_iterator<iterator>;
         using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 
-        static const size_type npos  = -1;
+        static const size_type npos  = std::numeric_limits<size_type>::max();
 
         constexpr memory_view(const memory_view& other) = default;
         constexpr memory_view(memory_view&& other) = default;
