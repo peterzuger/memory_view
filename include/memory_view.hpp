@@ -199,7 +199,7 @@ namespace memory_view{
     };
 
     template<class T>
-    constexpr bool operator==(memory_view<T> lhs, memory_view<T> rhs)noexcept{
+    constexpr bool operator==(const memory_view<T>& lhs, const memory_view<T>& rhs)noexcept{
         if(!(lhs.size() == rhs.size()))
             return false;
         for(std::size_t i = 0; i < lhs.size(); i++)
@@ -208,24 +208,24 @@ namespace memory_view{
         return true;
     }
     template<class T>
-    constexpr bool operator!=(memory_view<T> lhs, memory_view<T> rhs)noexcept{
+    constexpr bool operator!=(const memory_view<T>& lhs, const memory_view<T>& rhs)noexcept{
         return !(lhs == rhs);
     }
 
     template<class T>
-    constexpr bool operator< (memory_view<T> lhs, memory_view<T> rhs)noexcept{
+    constexpr bool operator< (const memory_view<T>& lhs, const memory_view<T>& rhs)noexcept{
         return std::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin, rhs.end());
     }
     template<class T>
-    constexpr bool operator> (memory_view<T> lhs, memory_view<T> rhs)noexcept{
+    constexpr bool operator> (const memory_view<T>& lhs, const memory_view<T>& rhs)noexcept{
         return rhs < lhs;
     }
     template<class T>
-    constexpr bool operator<=(memory_view<T> lhs, memory_view<T> rhs)noexcept{
+    constexpr bool operator<=(const memory_view<T>& lhs, const memory_view<T>& rhs)noexcept{
         return !(rhs < lhs);
     }
     template<class T>
-    constexpr bool operator>=(memory_view<T> lhs, memory_view<T> rhs)noexcept{
+    constexpr bool operator>=(const memory_view<T>& lhs, const memory_view<T>& rhs)noexcept{
         return !(lhs < rhs);
     }
 }
