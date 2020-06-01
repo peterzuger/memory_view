@@ -228,6 +228,11 @@ namespace memory_view{
     constexpr bool operator>=(const memory_view<T>& lhs, const memory_view<T>& rhs)noexcept{
         return !(lhs < rhs);
     }
+
+    template<class T>
+    void swap(memory_view<T>& x, memory_view<T>& y)noexcept(noexcept(x.swap(y))){
+        x.swap(y);
+    }
 }
 
 #endif /* MEMORY_VIEW_HPP */
