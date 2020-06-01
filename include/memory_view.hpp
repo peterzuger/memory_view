@@ -32,10 +32,12 @@
 #define MEMORY_VIEW_HPP
 
 #include <algorithm>
+#include <array>
+#include <exception>
 #include <iterator>
 #include <limits>
 #include <stdexcept>
-#include <exception>
+#include <vector>
 
 namespace memory_view{
     namespace impl{
@@ -85,6 +87,22 @@ namespace memory_view{
         constexpr memory_view(pointer begin, pointer end):
             _data{begin},
             _size{end - begin}{}
+
+        // construct from std::array
+        template<std::size_t N>
+        constexpr memory_view(std::array<T, N>& arr):
+            _data{arr.data()},
+            _size{N}{}
+
+        // construct from std::vector
+        constexpr memory_view(std::vector<T>& vec):
+            _data{vec.data()},
+            _size{vec.size()}{}
+
+        // construct from std::string
+        constexpr memory_view(std::basic_string<T>& str):
+            _data{str.data()},
+            _size{str.size()}{}
 
         void swap(memory_view& other)noexcept{
             using std::swap;
