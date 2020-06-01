@@ -118,10 +118,10 @@ namespace memory_view{
             return const_iterator(data());
         }
         constexpr iterator end()noexcept{
-            return iterator(data()+size());
+            return iterator(data() + size());
         }
         constexpr const_iterator end()const noexcept{
-            return const_iterator(data()+size());
+            return const_iterator(data() + size());
         }
 
         // reverse iterators
@@ -188,10 +188,10 @@ namespace memory_view{
             return _data[0];
         }
         constexpr reference back()noexcept{
-            return _data[size()-1];
+            return _data[size() - 1];
         }
         constexpr const_reference back()const noexcept{
-            return _data[size()-1];
+            return _data[size() - 1];
         }
 
         constexpr pointer data()noexcept{
