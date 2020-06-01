@@ -163,8 +163,12 @@ namespace memory_view{
             return std::numeric_limits<std::size_t>::max();
         }
 
+        constexpr size_type itemsize()const noexcept{
+            return sizeof(T);
+        }
+
         constexpr size_type nbytes()const noexcept{
-            return sizeof(T) * _size;
+            return itemsize() * size();
         }
 
         // element access:
