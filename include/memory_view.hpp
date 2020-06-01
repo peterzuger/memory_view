@@ -53,7 +53,7 @@ namespace memory_view{
 
     template<typename T>
     class memory_view{
-        T*    _data;
+        T*          _data;
         std::size_t _size;
 
     public:
