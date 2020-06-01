@@ -163,6 +163,10 @@ namespace memory_view{
             return std::numeric_limits<std::size_t>::max();
         }
 
+        constexpr size_type nbytes()const noexcept{
+            return sizeof(T) * _size;
+        }
+
         // element access:
         constexpr reference operator[](size_type n)noexcept{
             return _data[n];
